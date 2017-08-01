@@ -1,4 +1,4 @@
-module AllegroApi
+class AllegroApi
   module User
 
     #http://allegro.pl/webapi/documentation.php/show/id,84

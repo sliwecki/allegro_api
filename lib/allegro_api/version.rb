@@ -1,3 +1,3 @@
-module AllegroApi
-  VERSION = "0.0.2"
+class AllegroApi
+  VERSION = "0.0.3"
 end

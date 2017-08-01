@@ -1,4 +1,4 @@
-module AllegroApi
+class AllegroApi
   module Client
 
     def execute(method, params)

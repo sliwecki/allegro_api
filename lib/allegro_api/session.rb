@@ -1,4 +1,4 @@
-module AllegroApi
+class AllegroApi
   class Session
 
     attr_accessor :user_id, :key
