@@ -38,7 +38,7 @@ module AllegroApi
     end
 
     def local_version
-      query_all_sys_status.select { |item| item[:country_id] == configuration.country_code.to_s }.first[:ver_key]
+      [query_all_sys_status].flatten.select { |item| item[:country_id] == configuration.country_code.to_s }.first[:ver_key]
     end
   end
 end
