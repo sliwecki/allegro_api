@@ -1,5 +1,16 @@
-module AllegroApi
+class AllegroApi
   module Authentication
+
+    #http://allegro.pl/webapi/documentation.php/show/id,101582
+    def login_with_access_token(params={})
+      create_session(
+        execute(:do_login_with_access_token,
+          accessToken: params.fetch(:access_token) || 'ERR_INVALID_ACCESS_TOKEN', #HACK ERROR
+          countryCode: params.fetch(:country_code, configuration.country_code),
+          webapiKey: params.fetch(:api_key, configuration.api_key)
+        )
+      )
+    end
 
     #http://allegro.pl/webapi/documentation.php/show/id,83
     def login_enc
@@ -26,6 +37,8 @@ module AllegroApi
         )
       )
     end
+
+    attr_reader :session
 
     private
 

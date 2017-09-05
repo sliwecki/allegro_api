@@ -3,6 +3,7 @@ require 'digest'
 require 'savon'
 require 'allegro_api/version'
 require 'allegro_api/configuration'
+require 'allegro_api/error'
 require 'allegro_api/client'
 require 'allegro_api/session'
 require 'allegro_api/system_status'
@@ -10,16 +11,14 @@ require 'allegro_api/authentication'
 require 'allegro_api/user'
 require 'allegro_api/contractor'
 
-module AllegroApi
+class AllegroApi
   extend Client
-  extend SystemStatus
-  extend Authentication
-  extend User
-  extend Contractor
+  include SystemStatus
+  include Authentication
+  include User
+  include Contractor
 
   class << self
-    attr_reader :session
-
     def configure
       yield(configuration) if block_given?
     end
@@ -28,4 +27,6 @@ module AllegroApi
       @configuration ||= Configuration.new
     end
   end
+
+  delegate :configuration, :execute, to: :class
 end

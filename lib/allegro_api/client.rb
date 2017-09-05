@@ -1,8 +1,10 @@
-module AllegroApi
+class AllegroApi
   module Client
 
     def execute(method, params)
       savon.call(method, message: params).body[:"#{method}_response"]
+    rescue Savon::SOAPFault => error
+      raise AllegroApi::Error.new(error)
     end
 
     private

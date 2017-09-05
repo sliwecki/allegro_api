@@ -1,4 +1,4 @@
-module AllegroApi
+class AllegroApi
   module SystemStatus
 
     #http://allegro.pl/webapi/documentation.php/show/id,62
