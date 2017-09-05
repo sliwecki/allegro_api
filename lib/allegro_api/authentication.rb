@@ -5,7 +5,7 @@ class AllegroApi
     def login_with_access_token(params={})
       create_session(
         execute(:do_login_with_access_token,
-          accessToken: params.fetch(:access_token),
+          accessToken: params.fetch(:access_token) || 'ERR_INVALID_ACCESS_TOKEN', #HACK ERROR
           countryCode: params.fetch(:country_code, configuration.country_code),
           webapiKey: params.fetch(:api_key, configuration.api_key)
         )
